@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FG>   
+    <metric>
+        <algorithm>automatic</algorithm>
+        <timeStep>1</timeStep>
+        <dataHorizon>13.08.10.2014-14.08.10.2014</dataHorizon>
+        <localDBIP>localhost</localDBIP>
+        <reportDataFolder>/home/ubuntu/FG</reportDataFolder>
+        <parameter name='window' value='60000' />
+        <parameter name='nCPU' value='1' />
+        <parameter name='LQNFile' value='/home/ubuntu/pcm2lqn-2015-01-23-111738.xml' />
+        <parameter name='PCMProcessorScaleFile' value='/home/ubuntu/default.resourceenvironment' />
+        <parameter name='PCMDemandFile' value='/home/ubuntu/default.repository' />
+        <parameter name='PCMUsageModelFile' value=''/>
+        <parameter name='ClassMapFile' value='/home/ubuntu/classMap.properties' />
+        <parameter name='ResourceMapFile' value='/home/ubuntu/resourceMap.properties' />
+    </metric>
+</FG>
