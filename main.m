@@ -46,19 +46,29 @@ while 1
                 if strcmpi(subNode.getNodeName, 'dataHorizon')
                     dataHorizon = char(subNode.getTextContent);
                     dataHorizon = java.lang.String(dataHorizon);
-                    try
-                        horizons = dataHorizon.split('-');
-                        sdf = SimpleDateFormat('HH.dd.MM.yyyy');
-                        sdf.setTimeZone(SimpleTimeZone(SimpleTimeZone.UTC_TIME, 'UTC'));
-                        date = sdf.parse(horizons(1));
-                        startTime = num2str(date.getTime());
+                    
+                    horizonValue = str2double(dataHorizon);
+                    if isnan(horizonValue)
+                        try
+                            horizons = dataHorizon.split('-');
+                            sdf = SimpleDateFormat('HH.dd.MM.yyyy');
+                            sdf.setTimeZone(SimpleTimeZone(SimpleTimeZone.UTC_TIME, 'UTC'));
+                            date = sdf.parse(horizons(1));
+                            startTime = num2str(date.getTime());
+                            
+                            date = sdf.parse(horizons(2));
+                            endTime = num2str(date.getTime());
+                        catch err
+                            err.message
+                            disp('Please input correct horizons');
+                            exit
+                        end
+                    else
+                        endTime = java.lang.System.currentTimeMillis();
+                        startTime = endTime - horizonValue*60*1000;
                         
-                        date = sdf.parse(horizons(2));
-                        endTime = num2str(date.getTime());
-                    catch err
-                        err.message
-                        disp('Please input correct horizons');
-                        exit
+                        endTime = num2str(endTime);
+                        startTime = num2str(startTime);
                     end
                 end
                 if strcmpi(subNode.getNodeName, 'localDBIP')
